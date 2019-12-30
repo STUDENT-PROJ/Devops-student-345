@@ -1,0 +1,43 @@
+{
+	"label_template": "${COUNT}",
+	"lock_behavior": "unlockWhenFinished",
+	"name": "Test-pipeline-new",
+	"group": "TEST",
+	"materials": [{
+		"url": "git@github.com:STUDENT-PROJ/gocd-script.git",
+		"type": "git"
+	}],
+	"stages": [{
+		"name": "Deploy",
+		"fetch_materials": true,
+		"never_cleanup_artifacts": false,
+		"approval": {
+			"type": "success",
+			"roles": [],
+			"users": []
+		},
+		"clean_working_directory": false,
+		"environment_variables": [{
+			"name": "JOB_NAME",
+			"value": "fetchartifact"
+		}],
+		"jobs": [{
+			"name": "Fetch-Artifact",
+			"environment_variables": [],
+			"tabs": [],
+			"resources": [],
+			"artifacts": [],
+			"properties": [],
+			"run_instance_count": null,
+			"timeout": 0,
+			"tasks": [{
+				"type": "exec",
+				"run_if": "passed",
+				"on_cancel": null,
+				"command": "./test123.sh",
+				"arguments": [],
+				"working_directory": null
+			}]
+		}]
+	}]
+}
